@@ -4,17 +4,17 @@ module.exports = function(){
 
 		case 'development':
 			return {
-				port: 5555
+				port: 3333
 			};
 
 		case 'production':
 			return {
-				port: 5555
+				port: 3333
 			};
 
 		default:
 			return {
-				port: 5555
+				port: 3333
 			};
 
 	}

@@ -4,6 +4,7 @@
   "description": "Potionseller webapp",
   "author": "thuyaaung",
   "dependencies": {
+    "bower": "^1.6.5",
     "express": "^4.13.3",
     "flightplan": "^0.6.6"
   }

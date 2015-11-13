@@ -11,11 +11,20 @@ console.log(configs);
 // Setup
 // -----
 var port = config().port;
+app.use('/bower_components',  express.static(__dirname + '/bower_components'));
+app.use('/css',  express.static(__dirname + '/css'));
+app.use('/app',  express.static(__dirname + '/app'));
 
-
+// Homepage
 app.get('/', function(req, res){
-	res.send('Hello from Potionseller WEB');
+	res.sendFile(__dirname+'/index.html');
 });
+
+// Everything else
+// app.get('*', function(req, res){
+// 	res.sendFile(__dirname+'/404.html');
+// });
+
 
 // Start app
 // ---------

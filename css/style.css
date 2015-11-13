@@ -1,0 +1,8 @@
+.margin-sm {
+	margin: 10px;
+}
+
+.vcenter {
+    display: flex;
+    align-items: center;
+}
