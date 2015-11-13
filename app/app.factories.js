@@ -1,0 +1,1 @@
+var appFactories = angular.module('appFactories', ['ngResource']);

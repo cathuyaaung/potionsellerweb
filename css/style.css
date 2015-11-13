@@ -1,3 +1,14 @@
+
+/*
+http://webdesign.tutsplus.com/tutorials/quick-tip-dont-forget-the-viewport-meta-tag--webdesign-5972
+
+this is need to make websites work in mobile
+*/
+@viewport{
+    zoom: 1.0;
+    width: device-width;
+}
+
 .margin-sm {
 	margin: 10px;
 }
@@ -5,4 +16,8 @@
 .vcenter {
     display: flex;
     align-items: center;
+}
+
+.category-height {
+	height: 200px;
 }

@@ -1,0 +1,45 @@
+<div class="container">
+
+	<div class="row vcenter">
+		<div class="col-sm-2">
+			<a class="btn btn-default btn-block" href="#/">Main Menu</a>			
+		</div>
+		<div class="col-sm-3">
+			<h4>Manage Inventory</h4>		
+		</div>
+	</div>
+
+	<hr>
+
+	<div class="row">
+		<div class="col-sm-3">
+			<a class="btn btn-default btn-block" href="#/addcategory">
+				<h4>Add Category</h4>	
+			</a>			
+		</div>
+	</div>
+
+	<hr>
+		
+	<div class="row">
+		
+		<div class="col-lg-2 col-sm-3 col-xs-4 category-height" ng-repeat="category in categories">
+			<div class="panel panel-default btn btn-block" 
+			ng-click="selectcategory(category)">						
+				<div class="panel-heading">
+					<h3 class="panel-title text-center">{{category.name}}</h3>		
+				</div>
+				<div class="panel-body">{{category.desc}}</div>
+				
+				<div class="panel-footer text-center">
+					<a class="btn btn-sm btn-warning glyphicon glyphicon-edit" 
+					ng-click="updatecategory(category)"></a>		
+					<button class="btn btn-sm btn-danger glyphicon glyphicon-remove" 
+					ng-click="removecategory(category)"></button>		
+				</div>
+			</div>						
+		</div>
+
+	</div>
+
+</div>

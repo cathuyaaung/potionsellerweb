@@ -9,7 +9,7 @@ module.exports = function(){
 
 		case 'production':
 			return {
-				port: 3333
+				port: 5555
 			};
 
 		default:
