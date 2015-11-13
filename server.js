@@ -17,7 +17,7 @@ app.use('/app',  express.static(__dirname + '/app'));
 
 // Homepage
 app.get('/', function(req, res){
-	res.sendFile(__dirname+'/index.html');
+	res.sendFile(__dirname+'/index.html', { message: 'test' });
 });
 
 // Everything else

@@ -1,6 +1,7 @@
-appFactories.factory('Category', ['$resource',
-  function($resource){
-    return $resource('http://localhost:5555/category/:categoryid', 
+appFactories.factory('Category', 
+	['$resource','configVariables',  function
+	($resource, configVariables){
+    return $resource(configVariables.resturl+'category/:categoryid', 
     	{ 
     		categoryid: '@categoryid'
     	}, 
