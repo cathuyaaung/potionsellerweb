@@ -40,9 +40,9 @@
 				
 				<div class="panel-footer text-center">
 					<a class="btn btn-sm btn-warning glyphicon glyphicon-edit" 
-					ng-click="updateitem(item)"></a>		
+					ng-click="updateitem(item);$event.stopPropagation()"></a>		
 					<button class="btn btn-sm btn-danger glyphicon glyphicon-remove" 
-					ng-click="removeitem(item)"></button>		
+					ng-click="removeitem(item);$event.stopPropagation()"></button>		
 				</div>
 			</div>						
 		</div>

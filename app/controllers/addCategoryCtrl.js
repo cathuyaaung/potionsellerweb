@@ -1,16 +1,18 @@
 
 appControllers.controller('addCategoryCtrl', [
-	'$scope', '$location', 'Category', function
-	($scope, $location, Category){
+	'$scope', '$location', '$http','Category', function
+	($scope, $location, $http, Category){
 
 	$scope.category = {};
 	$scope.title = 'Add Category Controller';
 
 	$scope.addcategory = function(){		
 		Category.save($scope.category, 
-			function(){
+			function(response){				
+				$scope.category = response.category;
+				console.log($scope.category);
 				$location.path('/categories');	
-			}, function(){
+			}, function(error){
 				console.log('addcategory failed');
 			});
 	};
