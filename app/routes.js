@@ -10,6 +10,11 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 
 
 	$stateProvider
+	.state('main', {
+		url: '/',
+		templateUrl: '/views/mainView.html',
+		controller: 'mainCtrl'
+	})	
 	.state('items', {
 		url: '/items',
 		templateUrl: '/views/itemsView.html',

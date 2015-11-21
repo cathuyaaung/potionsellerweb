@@ -1,4 +1,5 @@
-appFactories.factory('Category', ['$resource', function($resource){
+appFactories.factory('Category', ['$resource',
+	function($resource){
 	return $resource('http://localhost:5555/category/:categoryid', 
 		{ categoryid: '@categoryid' },  {
 			'getone': {method:'GET'},
@@ -9,7 +10,8 @@ appFactories.factory('Category', ['$resource', function($resource){
 		});
 }]);
 
-appFactories.factory('Item', ['$resource', function($resource){
+appFactories.factory('Item', ['$resource', 
+	function($resource){
 	return $resource('http://localhost:5555/category/:categoryid/item/:itemid', 
 		{ categoryid: '@categoryid', itemid: '@itemid' },  {
 			'getone': {method:'GET'},
@@ -21,7 +23,8 @@ appFactories.factory('Item', ['$resource', function($resource){
 }]);
 
 
-appFactories.factory('Supplier', ['$resource', function($resource){
+appFactories.factory('Supplier', ['$resource', 
+	function($resource){
 	return $resource('http://localhost:5555/supplier/:supplierid', 
 		{ supplierid: '@supplierid' },  {
 			'getone': {method:'GET'},
@@ -32,7 +35,8 @@ appFactories.factory('Supplier', ['$resource', function($resource){
 		});
 }]);
 
-appFactories.factory('Customer', ['$resource', function($resource){
+appFactories.factory('Customer', ['$resource', 
+	function($resource){
 	return $resource('http://localhost:5555/customer/:customerid', 
 		{ customerid: '@customerid' }, {
 			'getone': {method:'GET'},
@@ -76,8 +80,9 @@ appFactories.factory('PurchaseOrderPayment', ['$resource', function($resource){
 }]);
 
 
-appFactories.factory('SaleOrder', ['$resource', function($resource){
-	return $resource('http://localhost:5555/sorder/:sorderid', 
+appFactories.factory('SaleOrder', ['$resource', 'ENV',
+	function($resource, ENV){
+	return $resource(ENV.apiendpoint+'/sorder/:sorderid', 
 		{ sorderid: '@sorderid' },  {
 			'getone': {method:'GET'},
 			'create': {method:'POST'},

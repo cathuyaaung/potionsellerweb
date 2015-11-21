@@ -11,6 +11,8 @@
   "dependencies": {
     "bower": "^1.6.5",
     "express": "^4.13.3",
-    "flightplan": "^0.6.7"
+    "flightplan": "^0.6.7",
+    "grunt": "^0.4.5",
+    "grunt-ng-constant": "^1.1.0"
   }
 }
