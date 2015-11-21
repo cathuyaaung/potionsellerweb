@@ -1,0 +1,115 @@
+		<div class="container">
+		
+			<!-- Categories -->			
+			<div class="row">
+				<h4>Categories</h4>
+				<div class="col-md-3 btn" ng-repeat="category in categories" ng-click="selectcategory(category)">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<h4>{{category.name}}</h4>
+							<p>{{category.desc}}</p>
+							<span class="glyphicon glyphicon-edit btn pull-left" 
+							ng-click="updatecategory(category);$event.stopPropagation()"></span>
+							<span class="glyphicon glyphicon-remove btn pull-right" 
+							ng-click="removecategory(category);$event.stopPropagation()"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- End of Categories -->
+			<!-- Add Update Category -->
+			<div class="row">
+				<div class="col-md-4">
+					<h4>Add Category</h4>
+					<form>
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Category Name" 
+							ng-model="categorytoadd.name">	
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Category Description"
+							ng-model="categorytoadd.desc">	
+						</div>
+						<div class="form-group">
+							<button class="btn btn-primary" ng-click="addcategory(categorytoadd)">Add</button>
+						</div>						
+					</form>					
+				</div>
+				<div class="col-md-4">
+					<h4>Update Category</h4>
+					<form>
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Category Name"
+							ng-model="categorytoupdate.name">	
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Category Description"
+							ng-model="categorytoupdate.desc">	
+						</div>
+						<div class="form-group">
+							<button class="btn btn-primary" ng-click="saveupdatedcategory(categorytoupdate)">Update</button>
+						</div>																		
+					</form>					
+				</div>
+			</div>
+			<!-- End of Add Update Category -->
+
+			<!-- Items -->
+			<div class="row">
+				<h4>{{selectedcategory.name}}</h4>
+				<p>{{selectedcategory.desc}}</p>
+				<h4>Items</h4>
+				<div class="col-md-3 btn" ng-repeat="item in items" ng-click="selectitem(item)">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<h4>{{item.name}}</h4>
+							<p>{{item.desc}}</p>
+							<small>{{item.count}}</small>
+							<span class="glyphicon glyphicon-remove" 
+							ng-click="removeitem(item);$event.stopPropagation()"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- End of Items -->
+			<!-- Add Update Item -->
+			<div class="row">
+				<div class="col-md-4">
+					<h4>Add Item</h4>
+					<form>
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Item Name" 
+							ng-model="itemtoadd.name">	
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Item Description"
+							ng-model="itemtoadd.desc">	
+						</div>
+						<div class="form-group">
+							<button class="btn btn-primary" ng-click="additem(itemtoadd)">Add</button>
+						</div>						
+					</form>					
+				</div>
+				<div class="col-md-4">
+					<h4>Update Item</h4>
+					<form>
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Item Name"
+							ng-model="itemtoupdate.name">	
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Item Description"
+							ng-model="itemtoupdate.desc">	
+						</div>
+						<div class="form-group">
+							<button class="btn btn-primary" ng-click="updateitem(itemtoupdate)">
+								Update
+							</button>
+						</div>																		
+					</form>					
+				</div>
+			</div>
+			<!-- End of Add Update Item -->
+		
+
+		</div>

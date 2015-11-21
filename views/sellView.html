@@ -1,0 +1,125 @@
+	<!-- Recent Sales -->
+	<section class="top-buffer" ng-hide="sellMode">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<button class="btn btn-primary btn-lg" ng-click="sellview()">
+					SELL
+				</button>	
+			</div>
+		</div>		
+		<div class="row top-buffer">
+			<div class="col-xs-12 text-center">
+				<h4>Recent Sale Records</h4>
+				<table class="table table-hover table-condensed">
+					<thead>
+						<th>#</th>
+						<th>Details</th>						
+						<th>Amount</th>
+						<th>Date</th>
+					</thead>
+					<tbody>
+						<tr ng-repeat="sorder in sorders">
+							<td><h6>{{$index + 1}}</h6></td>
+							<td>
+								{{sorder.customer.name}}
+								<span ng-repeat="sorderitem in sorder.sorderitems">
+									<h6>{{sorderitem.item.name}} x {{sorderitem.count}} ({{sorderitem.price}})</h6>
+								</span>
+							</td>
+							<td class="text-right">
+								<span class="text-info">{{sorder.total | currency:"":0}}</span><br>
+								<!-- <span class="text-danger">{{sorder.remaining | currency:"":0}}</span> -->
+							</td>
+							<td><h6>{{sorder.date | date:"MMM d yyyy HH:mm a"}}</h6></td>
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+		</div>		
+	</section>
+	<!-- End of Recent Sales -->
+	
+	<!-- SELL -->
+	<section ng-show="sellMode">
+		<div class="row top-buffer">
+			<div class="col-sm-12">
+				<button class=" btn btn-success btn-block" ng-click="addcustomer()" ng-hide="customer.name">
+					<span class="glyphicon glyphicon-search"></span> Add Customer
+				</button>				
+				<button class=" btn btn-default btn-block" ng-click="addcustomer()" ng-show="customer.name">
+					{{customer.name}}
+				</button>				
+			</div>
+		</div>
+		<table class="table table-condensed top-buffer">
+			<thead>
+				<th>Item</th>
+				<th>Count</th>
+				<th>Price</th>
+				<th>Total</th>
+				<th></th>
+			</thead>
+			<tbody>
+				<tr ng-repeat="sitem in sitems">
+					<td class="col-xs-4">
+						<button class=" btn btn-success" ng-click="additem($index)" ng-hide="sitem.item.name">
+							<span class="glyphicon glyphicon-search"></span> Add Item
+						</button>
+						<button class=" btn btn-default" ng-click="additem($index)" ng-show="sitem.item.name">
+							<span >{{sitem.item.name}}</span>
+						</button>						
+					</td>
+					<td class="col-xs-1">
+						<input type="number" class="form-control" ng-model="sitem.count" ng-change="valuechanged($index)">
+						<div class="block text-center">
+							<small class="text-block text-center">{{sitem.item.count}}</small>
+						</div>
+						
+					</td>
+					<td class="col-xs-3">
+						<input type="number" class="form-control" ng-model="sitem.price" ng-change="valuechanged($index)">
+						<div class="block text-center" ng-show="sitem.item">
+							<small>{{sitem.item.suggestedsaleprice || 0 | currency:"":0}}</small>
+						</div>
+					</td>
+					<td class="col-xs-3 text-right">{{sitem.total || 0 | currency:"":0}}</td>
+					<td class="col-xs-1">
+						<button class=" btn btn-danger btn-block btn-sm" ng-click="removeitem($index)">
+							<span class="glyphicon glyphicon-remove"></span>
+						</button>						
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<div class="row">
+			<div class="col-xs-12 text-right">
+				<h4>Total: {{grandtotal || 0 | currency:"":0}}</h4>
+			</div>					
+		</div>
+		<hr>
+		<div class="row" ng-show="error">
+			<div class="col-xs-12">
+				<span class="text-danger text-right">
+					{{error}}
+				</span>
+			</div>
+		</div>		
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="row">
+					<div class="col-xs-3 text-left">
+						<button class="btn btn-warning btn-md" ng-click="back()">Back</button>
+					</div>
+					<div class="col-xs-9 text-right">
+						<button class="btn btn-success btn-md" ng-click="addrow()">Add Row</button>
+					  	<button class="btn btn-default btn-md" ng-click="clear()">Clear</button>
+					  	<button class="btn btn-primary btn-md" ng-click="done()">Done</button>						
+					</div>
+				</div>					
+			</div>					
+		</div>
+
+	</section>
+	<!-- End of SELL -->

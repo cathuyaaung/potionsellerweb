@@ -1,0 +1,25 @@
+<div class="container">
+	<!-- Suppliers -->
+	<div class="row">
+		<div class="col-sm-12">
+			<h4>Suppliers</h4>
+			<span class="glyphicon glyphicon-plus btn btn-primary" ng-click="addsupplier()"></span>			
+		</div>
+	</div>
+	<hr>
+	<div class="row">
+		<div class="col-md-3 btn" ng-repeat="supplier in suppliers" ng-click="selectsupplier(supplier)">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<h4>{{supplier.name}}</h4>
+					<p>{{supplier.desc}}</p>
+					<span class="glyphicon glyphicon-edit btn btn-warning" 
+					ng-click="updatesupplier(supplier);$event.stopPropagation()"></span>
+					<span class="glyphicon glyphicon-remove btn btn-danger" 
+					ng-click="removesupplier(supplier);$event.stopPropagation()"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End of Suppliers -->
+</div>

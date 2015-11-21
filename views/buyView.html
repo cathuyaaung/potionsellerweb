@@ -1,0 +1,174 @@
+<div class="container">
+
+	<div class="row">
+		<div class="col-sm-12">
+			<h4>Buy</h4>
+		</div>
+	</div>
+
+	<section ng-hide="addBuyRecordView">
+
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<button class="btn btn-primary btn-lg" ng-click="addPurchaseRecord()">
+					BUY
+				</button>	
+			</div>
+		</div>
+		<hr>
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<h4>Recent Purchase Records</h4>
+				<table class="table table-hover table-condensed">
+					<thead>
+						<th>#</th>
+						<th>Supplier</th>
+						<th>Total</th>
+						<th>Remaining</th>
+						<th>Date</th>
+					</thead>
+					<tbody>
+						<tr ng-repeat="porder in porders" ng-click="showOrderDetail(porder)">
+							<td>{{$index + 1}}</td>
+							<td>{{porder.supplier.name}}</td>
+							<td class="text-info">{{porder.total | currency:"":0}}</td>
+							<td class="text-danger">{{porder.remaining | currency:"":0}}</td>
+							<td>{{porder.date | date: shortdate}}</td>
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+		</div>
+
+	</section>
+
+	<section ng-show="addBuyRecordView">
+
+		<div class="row top-buffer">
+
+			<div class="col-md-3">
+		
+				<div class="row" ng-hide="selectedsupplier">
+					<div class="col-xs-12">
+						<button class="btn btn-primary btn-lg" ng-click="choosesupplier()">
+							<span class="glyphicon glyphicon-search"></span> 
+							Supplier
+						</button>	
+					</div>			
+				</div>
+				<div class="row top-buffer">
+					<div class="col-xs-12">
+					<div class="panel panel-default" ng-show="selectedsupplier">
+						<div class="panel-body text-center">
+							<h4>{{selectedsupplier.name}}</h4>
+							<p>{{selectedsupplier.desc}}</p>
+							<span class="glyphicon glyphicon-remove btn btn-danger" 
+							ng-click="removeselectedsupplier(selectedsupplier);$event.stopPropagation()"></span>
+						</div>
+					</div>	
+					</div>			
+				</div>
+
+			</div>
+
+			<div class="col-md-9">
+
+
+				<div class="row" ng-repeat="item in items track by $index">
+					<div class="col-xs-12">
+
+						<div class="row">
+
+							<div class="col-xs-4">
+								<div class="row" ng-hide="items[$index].name">
+									<div class="col-xs-12">
+										<button class="btn btn-primary top-buffer"
+										ng-click="chooseitem($index)">
+											<span class="glyphicon glyphicon-search"></span> 
+											Item
+										</button>									
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-xs-12">
+										<div class="panel panel-default" ng-show="items[$index].name">
+											<div class="panel-body text-center">
+												<h4>{{items[$index].name}}</h4>							
+												<span class="glyphicon glyphicon-remove btn btn-danger" 
+												ng-click="removeitem($index);$event.stopPropagation()"></span>
+											</div>
+										</div>
+									</div>	
+								</div>							
+							</div>
+
+							<div class="col-xs-5">
+								<div class="row">
+									<div class="col-xs-12">
+										<div class="form-group">
+											<label for="count">Count</label>
+											<input type="number" class="form-control input-lg" ng-model="items[$index].count"
+											ng-change="valuechanged($index)">
+										</div>									
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-xs-12">
+										<div class="form-group">
+											<label for="count">Price</label>
+											<input type="number" class="form-control input-lg"  ng-model="items[$index].price" 
+											ng-change="valuechanged($index)">
+										</div>												
+									</div>
+								</div>
+							</div>
+
+							<div class="col-xs-3 text-right">
+								<h4>Total: {{items[$index].total || 0 | currency:"":0}}</h4>					
+							</div>
+
+						</div>					
+						<div class="row">
+							<div class="col-xs-12">
+								<hr>
+							</div>
+						</div>	
+
+					</div>				
+				</div>
+
+				<div class="row">
+					<div class="col-xs-6">
+						<button class="btn btn-default btn-lg" ng-click="addrow()">
+							<span class="glyphicon glyphicon-plus"></span> 
+							Add row
+						</button>
+					</div>
+					<div class="col-xs-6">
+						<h4>Total: {{grandtotal || 0 | currency:"":0}}</h4>						
+					</div>			
+				</div>
+				<div class="row top-buffer">
+					<div class="col-xs-12">
+						<div class="row">
+							<div class="col-xs-12 text-right">
+								<div class="btn-group">
+								  <button class="btn btn-primary btn-lg" ng-click="done()">Done</button>
+								  <button class="btn btn-default btn-lg">Clear</button>
+								  <button class="btn btn-warning btn-lg" ng-click="back()">Back</button>
+								</div>						
+							</div>
+						</div>					
+					</div>					
+				</div>
+
+			</div>
+
+		</div>
+	
+	</section>
+
+	<hr>
+
+</div>

@@ -1,0 +1,41 @@
+<html ng-app="app">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">		
+		
+		<link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+		<link href="/views/style.css" rel="stylesheet">
+
+		<script src="/bower_components/lodash/lodash.min.js"></script>
+		<script src="/bower_components/async/dist/async.min.js"></script>
+		<script src="/bower_components/angular/angular.min.js"></script>
+		<script src="/bower_components/angular-resource/angular-resource.min.js"></script>
+		<script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+		<script src="/bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+		<script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+
+		<script src="/app/app.js"></script>
+		<script src="/app/routes.js"></script>
+		<script src="/app/factories.js"></script>
+		<script src="/app/itemCtrl.js"></script>
+		<script src="/app/supplierCtrl.js"></script>
+		<script src="/app/customerCtrl.js"></script>
+		<script src="/app/buyCtrl.js"></script>
+		<script src="/app/sellCtrl.js"></script>
+	</head>
+	<body>
+		<div class="container">					
+			<ul class="nav nav-tabs">
+				<li><a ui-sref="sell">Sell</a></li>
+				<li><a ui-sref="buy">Buy</a></li>
+				<li><a ui-sref="items">Items</a></li>
+				<li><a ui-sref="suppliers">Suppliers</a></li>
+				<li><a ui-sref="customers">Customers</a></li>
+				<li><a href="#">Purchase Report</a></li>
+				<li><a href="#">Sales Report</a></li>
+			</ul>
+
+			<ui-view>
+
+		</div>
+	</body>
+</html>

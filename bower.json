@@ -1,12 +1,27 @@
 {
-  "name": "potionsellerweb",
+  "name": "apitest",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Thomas Aung <thu.ya.a@gmail.com>"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
   "dependencies": {
-    "angular": "angularjs#~1.4.7",
-    "angular-route": "~1.4.7",
     "bootstrap": "~3.3.5",
+    "angular": "~1.4.7",
     "angular-resource": "~1.4.7",
-    "angular-animate": "~1.4.7",
+    "angular-ui-router": "~0.2.15",
+    "angular-bootstrap": "~0.14.3",
     "lodash": "~3.10.1",
-    "ng-file-upload": "~10.0.2"
+    "async": "~1.5.0"
   }
 }

@@ -1,0 +1,25 @@
+<div class="container">
+	<!-- Customers -->
+	<div class="row">
+		<div class="col-sm-12">
+			<h4>Customers</h4>
+			<span class="glyphicon glyphicon-plus btn btn-primary" ng-click="addcustomer()"></span>			
+		</div>
+	</div>
+	<hr>
+	<div class="row">
+		<div class="col-md-3 btn" ng-repeat="customer in customers" ng-click="selectcustomer(customer)">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<h4>{{customer.name}}</h4>
+					<p>{{customer.desc}}</p>
+					<span class="glyphicon glyphicon-edit btn btn-warning" 
+					ng-click="updatecustomer(customer);$event.stopPropagation()"></span>
+					<span class="glyphicon glyphicon-remove btn btn-danger" 
+					ng-click="removecustomer(customer);$event.stopPropagation()"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End of Customers -->
+</div>
