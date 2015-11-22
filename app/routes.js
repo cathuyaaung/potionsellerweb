@@ -40,7 +40,10 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 		templateUrl: '/views/sellView.html',
 		controller: 'sellCtrl'
 	})
-
+	// .state('purchaseorders', {
+	// 	url: '/po',
+	// 	templateUrl, """
+	// })
 
 
 	;
