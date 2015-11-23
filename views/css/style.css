@@ -1,6 +1,18 @@
 .top-buffer { margin-top:10px; }
-
+.top-buffer-md { margin-top:30px; }
 .top-buffer-lg { margin-top:50px; }
+
+.bottom-buffer { margin-bottom:10px; }
+.bottom-buffer-md { margin-bottom:30px; }
+.bottom-buffer-lg { margin-bottom:50px; }
+
+.left-buffer-sm { margin-left:5px;}
+
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
 
 /* remove top and bottom margin for headers*/
 h6, h4 { 
