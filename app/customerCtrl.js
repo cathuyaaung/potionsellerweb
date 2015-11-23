@@ -7,7 +7,7 @@ appControllers.controller('customerCtrl',
 	$scope.addcustomer = function(){
 		var addCustomerModalInstance = $uibModal.open({
 			animation: true,
-			templateUrl: '/views/customerModal.html',
+			templateUrl: '/views/modals/customerModal.html',
 			controller: 'addCustomerModalCtrl'
 		});
 		addCustomerModalInstance.result.then(function(customer){
@@ -20,7 +20,7 @@ appControllers.controller('customerCtrl',
 	$scope.updatecustomer = function(customer){
 		var updateCustomerModalInstance = $uibModal.open({
 			animation: true,
-			templateUrl: '/views/customerModal.html',
+			templateUrl: '/views/modals/customerModal.html',
 			controller: 'updateCustomerModalCtrl',
 			resolve: {
 				customer: function(){ return angular.copy(customer) }
@@ -37,7 +37,7 @@ appControllers.controller('customerCtrl',
 		customer.delete = false;
 		var deleteCustomerModalInstance = $uibModal.open({
 			animation: true,
-			templateUrl: '/views/confirmationModal.html',
+			templateUrl: '/views/modals/confirmationModal.html',
 			controller: 'deleteCustomerModalCtrl',
 			resolve: {
 				customer: function(){ return angular.copy(customer) }

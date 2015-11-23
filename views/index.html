@@ -3,7 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/views/style.css" rel="stylesheet">
+    <link href="/views/css/style.css" rel="stylesheet">
     
     <script src="/bower_components/lodash/lodash.min.js"></script>
     <script src="/bower_components/async/dist/async.min.js"></script>
@@ -20,6 +20,8 @@
     <script src="/app/routes.js"></script>
     <script src="/app/factories.js"></script>
     <script src="/app/navCtrl.js"></script>
+    <script src="/app/registerCtrl.js"></script>    
+    <script src="/app/loginCtrl.js"></script>    
     <script src="/app/mainCtrl.js"></script>
     <script src="/app/itemCtrl.js"></script>
     <script src="/app/supplierCtrl.js"></script>
@@ -29,41 +31,47 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-default" ng-controller='navCtrl'>
-        <div class="container-fluid">
+    <div ng-controller='navCtrl'>
+        <nav class="navbar navbar-default"
+        ng-hide="$state.current.name=='landing' || $state.current.name == 'pricing' || 
+                    $state.current.name == 'register' || $state.current.name == 'login'">
+            <div class="container-fluid">
 
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" 
-                data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" 
-                aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/#/">Myo Ma Shop</a>
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" 
+                    data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" 
+                    aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" ui-sref="mainmenu">Myo Ma Shop</a>
+                </div>
+                
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">            
+                        <li ng-class="{active: $state.includes('sell')}"><a ui-sref="sell">Sell</a></li>
+                        <li ng-class="{active: $state.includes('buy')}"><a ui-sref="buy">Buy</a></li>
+
+                        <li ng-class="{active: $state.includes('items')}"><a ui-sref="items">Items</a></li>                    
+                        <li ng-class="{active: $state.includes('suppliers')}"><a ui-sref="suppliers">Suppliers</a></li>
+                        <li ng-class="{active: $state.includes('customers')}"><a ui-sref="customers">Customers</a></li>
+                        
+                        <li ng-class="{active: $state.includes('sales')}"><a ui-sref="sales">Sales</a></li>
+                        <li ng-class="{active: $state.includes('purchases')}"><a ui-sref="purchases">Purchases</a></li>
+                        
+                        <li ng-class="{active: $state.includes('settings')}"><a ui-sref="settings">Settings</a></li>
+                        <li ng-class="{active: $state.includes('signout')}"><a ui-sref="login">Sign out</a></li>
+                    </ul>
+                    <p class="navbar-text">Signed in as [Zafar Ahmed]</p>
+                </div>
+
             </div>
-            <!-- <a ui-sref="main" class="btn btn-default navbar-btn">Home</a> -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">            
-                    <li ng-class="{active: $state.includes('sell')}"><a ui-sref="sell">Sell</a></li>
-                    <li ng-class="{active: $state.includes('buy')}"><a ui-sref="buy">Buy</a></li>
+        </nav>
+    </div>
 
-                    <li ng-class="{active: $state.includes('items')}"><a ui-sref="items">Items</a></li>                    
-                    <li ng-class="{active: $state.includes('suppliers')}"><a ui-sref="suppliers">Suppliers</a></li>
-                    <li ng-class="{active: $state.includes('customers')}"><a ui-sref="customers">Customers</a></li>
-                    
-                    <li ng-class="{active: $state.includes('sales')}"><a ui-sref="sales">Sales</a></li>
-                    <li ng-class="{active: $state.includes('purchases')}"><a ui-sref="purchases">Purchases</a></li>
-                    
-                    <li ng-class="{active: $state.includes('settings')}"><a ui-sref="settings">Settings</a></li>
-                    <li ng-class="{active: $state.includes('signout')}"><a ui-sref="signout">Sign out</a></li>
-                </ul>
-                <p class="navbar-text">Signed in as [Zafar Ahmed]</p>
-            </div>
 
-        </div>
-    </nav>
     <div class="container">
         <ui-view>
     </div>

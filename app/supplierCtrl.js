@@ -7,7 +7,7 @@ appControllers.controller('supplierCtrl',
 	$scope.addsupplier = function(){
 		var addSupplierModalInstance = $uibModal.open({
 			animation: true,
-			templateUrl: '/views/supplierModal.html',
+			templateUrl: '/views/modals/supplierModal.html',
 			controller: 'addSupplierCtrl'
 		});
 		addSupplierModalInstance.result.then(function(supplier){
@@ -20,7 +20,7 @@ appControllers.controller('supplierCtrl',
 	$scope.updatesupplier = function(supplier){
 		var updateSupplierModalInstance = $uibModal.open({
 			animation: true,
-			templateUrl: '/views/supplierModal.html',
+			templateUrl: '/views/modals/supplierModal.html',
 			controller: 'updateSupplierCtrl',
 			resolve: {
 				supplier: function(){ return angular.copy(supplier) }
@@ -38,7 +38,7 @@ appControllers.controller('supplierCtrl',
 		supplier.delete = false;
 		var deleteSupplierModalInstance = $uibModal.open({
 			animation: true,
-			templateUrl: '/views/confirmationModal.html',
+			templateUrl: '/views/modals/confirmationModal.html',
 			controller: 'deleteSupplierModalCtrl',
 			resolve: {
 				supplier: function(){ return angular.copy(supplier) }

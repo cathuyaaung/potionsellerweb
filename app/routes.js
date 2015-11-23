@@ -10,8 +10,28 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 
 
 	$stateProvider
-	.state('main', {
+	.state('landing', {
 		url: '/',
+		templateUrl: '/views/landingView.html',
+		controller: 'mainCtrl'
+	})
+	.state('pricing', {
+		url: '/pricing',
+		templateUrl: '/views/pricingView.html',
+		controller: 'mainCtrl'
+	})
+	.state('register', {
+		url: '/register',
+		templateUrl: '/views/registerView.html',
+		controller: 'registerCtrl'
+	})
+	.state('login', {
+		url: '/login',
+		templateUrl: '/views/loginView.html',
+		controller: 'loginCtrl'
+	})			
+	.state('mainmenu', {
+		url: '/main',
 		templateUrl: '/views/mainView.html',
 		controller: 'mainCtrl'
 	})	

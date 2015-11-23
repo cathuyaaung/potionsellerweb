@@ -12,7 +12,7 @@ function($scope, $uibModal, PurchaseOrder, PurchaseOrderItem){
 	$scope.choosesupplier = function(){
 		var chooseSupplierModalInstance = $uibModal.open({
 			animation: true,
-			templateUrl: '/views/chooseSupplierModal.html',
+			templateUrl: '/views/modals/chooseSupplierModal.html',
 			controller: 'chooseSupplierModalCtrl'
 		});
 		chooseSupplierModalInstance.result.then(function(supplier){
@@ -39,7 +39,7 @@ function($scope, $uibModal, PurchaseOrder, PurchaseOrderItem){
 		console.log($index);
 		var chooseItemModalInstance = $uibModal.open({
 			animation: true,
-			templateUrl: '/views/chooseItemModal.html',
+			templateUrl: '/views/modals/chooseItemModal.html',
 			controller: 'chooseItemModalCtrl'	
 		});
 		chooseItemModalInstance.result.then(function(item){
@@ -59,7 +59,7 @@ function($scope, $uibModal, PurchaseOrder, PurchaseOrderItem){
 		if($scope.selectedsupplier != null && $scope.items[0]._id != null){
 			var finalizePurchaseOrderModalInstance = $uibModal.open({
 				animation: true,
-				templateUrl: '/views/confirmationModal.html',
+				templateUrl: '/views/modals/confirmationModal.html',
 				controller: 'finalizePurchaseOrderModalCtrl'
 			});
 			finalizePurchaseOrderModalInstance.result.then(function(){				

@@ -32,7 +32,7 @@ function($scope, $uibModal, SaleOrder, SaleOrderItem) {
 	$scope.addcustomer = function(){
 		var addCustomerMI = $uibModal.open({
 			animation: true,
-			templateUrl: '/views/chooseCustomerModal.html',
+			templateUrl: '/views/modals/chooseCustomerModal.html',
 			controller: 'chooseCustomerModalCtrl'
 		});
 		addCustomerMI.result.then(function(customer){
@@ -42,7 +42,7 @@ function($scope, $uibModal, SaleOrder, SaleOrderItem) {
 	$scope.additem = function($index){
 		var chooseItemMI = $uibModal.open({
 			animation: true,
-			templateUrl: '/views/chooseItemModal.html',
+			templateUrl: '/views/modals/chooseItemModal.html',
 			controller: 'chooseItemModalCtrl'	
 		});
 		chooseItemMI.result.then(function(item){
@@ -79,7 +79,7 @@ function($scope, $uibModal, SaleOrder, SaleOrderItem) {
 		if($scope.error == null){
 			var finalizeSaleOrderMI = $uibModal.open({
 				animation: true,
-				templateUrl: '/views/confirmationModal.html',
+				templateUrl: '/views/modals/confirmationModal.html',
 				controller: 'finalizeSaleOrderModalCtrl'
 			});
 			finalizeSaleOrderMI.result.then(function(){		

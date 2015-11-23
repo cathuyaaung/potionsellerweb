@@ -1,5 +1,5 @@
 angular.module('config', [])
 
-.constant('ENV', {name:'development',apiendpoint:'http://localhost:5555'})
+.constant('ENV', {name:'production',apiendpoint:'http://www.lawkanet.xyz'})
 
 ;
