@@ -1,9 +1,23 @@
 appControllers.controller('loginCtrl', 
-	['$scope', '$location', '$state',
-	function($scope, $location, $state){
+	['$scope', '$location', '$state', 'User', '$localStorage',
+	function($scope, $location, $state, User, $localStorage){
+
+	$scope.user = {};
 
 	$scope.login = function(){
-		$location.path('/main');
+		
+		User.create({action: 'login'}, $scope.user, function(response){
+			$location.path('/main');
+			console.log(response);
+			$localStorage.token = response.token;
+			$localStorage.username = response.data.username;
+			$localStorage.company = response.data.company;
+
+			console.log($localStorage);
+		}, function(error){
+			console.log(error);
+		});
+
 	};
 
 }]);

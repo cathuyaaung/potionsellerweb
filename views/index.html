@@ -1,19 +1,25 @@
 <html ng-app="app">
 
 <head>
+    
+    <title>Lawkanet Simple Inventory</title>
+
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="/views/css/style.css" rel="stylesheet">
     
     <script src="/bower_components/lodash/lodash.min.js"></script>
     <script src="/bower_components/async/dist/async.min.js"></script>
-    <script src="/bower_components/angular/angular.min.js"></script>
+    
     <script src="/bower_components/jquery/dist/jquery.min.js"></script>        
     <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>    
+
+    <script src="/bower_components/angular/angular.min.js"></script>
     <script src="/bower_components/angular-resource/angular-resource.min.js"></script>
     <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="/bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
     <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="/bower_components/ngstorage/ngStorage.min.js"></script>
 
     <script src="/app/app.js"></script>
     <script src="/app/config.js"></script>
@@ -62,9 +68,8 @@
                         <li ng-class="{active: $state.includes('purchases')}"><a ui-sref="purchases">Purchases</a></li>
                         
                         <li ng-class="{active: $state.includes('settings')}"><a ui-sref="settings">Settings</a></li>
-                        <li ng-class="{active: $state.includes('signout')}"><a ui-sref="login">Sign out</a></li>
+                        <li ng-class="{active: $state.includes('signout')}"><a ng-click="signout()">[Zafar Ahmed] Sign out</a></li>
                     </ul>
-                    <p class="navbar-text">Signed in as [Zafar Ahmed]</p>
                 </div>
 
             </div>

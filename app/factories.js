@@ -1,8 +1,37 @@
+
+
+appFactories.factory('authInterceptor', function ($q, $localStorage) {
+    return {
+        request: function (config) {
+            config.headers = config.headers || {};
+            // console.log($localStorage.token);
+            if ($localStorage.token) {
+                config.headers.auth = $localStorage.token;
+            }
+            return config;
+        },
+ 
+        requestError: function(rejection) {
+            return $q.reject(rejection);
+        },
+ 
+        /* Set Authentication.isAuthenticated to true if 200 received */
+        response: function (response) {
+            return response || $q.when(response);
+        },
+ 
+        /* Revoke client authentication if 401 is received */
+        responseError: function(rejection) {
+            return $q.reject(rejection);
+        }
+    };
+})
+
 appFactories.factory('Category', ['$resource', 'ENV',
 	function($resource, ENV){
 	return $resource(ENV.apiendpoint+'/category/:categoryid', 
 		{ categoryid: '@categoryid' },  {
-			'getone': {method:'GET'},
+			'getone': {method:'GET' },
 			'create': {method:'POST'},
 			'getall': {method:'GET', isArray:true},
 			'update': {method:'PUT'},
@@ -116,3 +145,17 @@ appFactories.factory('SaleOrderPayment', ['$resource',  'ENV',
 			'delete': {method:'DELETE'}
 		});
 }]);
+
+
+appFactories.factory('User', ['$resource',  'ENV',
+	function($resource, ENV){
+	return $resource(ENV.apiendpoint+'/user/:action', 
+		{ action: '@action' },  {
+			'getone': {method:'GET'},
+			'create': {method:'POST'},
+			'getall': {method:'GET', isArray:true},
+			'update': {method:'PUT'},
+			'delete': {method:'DELETE'}
+		});
+}]);
+

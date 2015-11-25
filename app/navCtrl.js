@@ -1,17 +1,17 @@
 appControllers.controller('navCtrl', 
-	['$state', '$scope',
-	function($state, $scope){
+	['$state', '$scope', '$location', '$localStorage',
+	function($state, $scope, $location, $localStorage){
 
 	$scope.$state = $state;
 
 	$scope.showNavBar = true;
 
-	console.log($scope.$state.current.name);
-	// console.log($state.current.includes('sell'));
-	// if($state.includes('mainmenu')){
-	// 	showNavBar = true;
-	// } else {
-	// 	showNavBar = false;
-	// }
+	$scope.signout = function(){
+		delete $localStorage.token;
+		$location.path('/login');
+		console.log($localStorage);
+	};
+
+
 
 }]);

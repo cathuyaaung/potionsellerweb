@@ -1,8 +1,8 @@
 appControllers.controller('supplierCtrl', 
-	['$scope', 'Supplier', '$uibModal',
-	function($scope, Supplier, $uibModal){
+	['$scope', 'Supplier', '$uibModal', '$http', '$localStorage',
+	function($scope, Supplier, $uibModal, $http, $localStorage){
 
-	$scope.suppliers = Supplier.getall();
+	$scope.suppliers = Supplier.getall($localStorage.token);
 
 	$scope.addsupplier = function(){
 		var addSupplierModalInstance = $uibModal.open({

@@ -1,11 +1,18 @@
-app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 
-	function($stateProvider, $urlRouterProvider, $locationProvider){
+app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider', 
+	function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider){
 
 	$locationProvider.html5Mode({
 		enabled: true,
 		requireBase: false
 	});
 	
+
+    $httpProvider.interceptors.push('authInterceptor');
+    // $httpProvider.defaults.headers.common = {
+    //     'RemoteUser': 'billybob'
+    // };
+
+
 	$urlRouterProvider.otherwise("/");
 
 
@@ -33,7 +40,10 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 	.state('mainmenu', {
 		url: '/main',
 		templateUrl: '/views/mainView.html',
-		controller: 'mainCtrl'
+		controller: 'mainCtrl',
+		data: {
+			requireLogin: true
+		}
 	})	
 	.state('items', {
 		url: '/items',
@@ -43,7 +53,10 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 	.state('suppliers', {
 		url: '/suppliers',
 		templateUrl: '/views/suppliersView.html',
-		controller: 'supplierCtrl'
+		controller: 'supplierCtrl',
+		data: {
+			requireLogin: true
+		}
 	})
 	.state('customers', {
 		url: '/customers',
