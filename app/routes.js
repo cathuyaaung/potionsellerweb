@@ -60,6 +60,17 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 		templateUrl: '/views/sellView.html',
 		controller: 'sellCtrl'
 	})
+	.state('buy_YG', {
+		url: '/buy_YG',
+		templateUrl: '/views/buyView_YG.html',
+		controller: 'buyCtrl_YG'
+	})
+	.state('purchaseOrder', {
+		url: '/purchaseOrder',
+		templateUrl: '/views/purchaseOrderView.html',
+		controller: 'purchaseOrderCtrl'
+	})
+
 	// .state('purchaseorders', {
 	// 	url: '/po',
 	// 	templateUrl, """

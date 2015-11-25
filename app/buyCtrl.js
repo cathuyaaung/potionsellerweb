@@ -96,7 +96,7 @@ function($scope, $uibModal, PurchaseOrder, PurchaseOrderItem){
 	$scope.showOrderDetail = function(porder){
 		var orderDetailModalInstance = $uibModal.open({
 			animation: true,
-			templateUrl: '/views/purchaseOrderDetailModal.html',
+			templateUrl: '/views/modals/purchaseOrderDetailModal.html',
 			controller: 'purchaseOrderDetailModalCtrl',
 			resolve: {
 				porder: function(){ return angular.copy(porder) }

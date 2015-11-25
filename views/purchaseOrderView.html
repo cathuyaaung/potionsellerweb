@@ -1,0 +1,43 @@
+	<!-- Recent Sales -->
+	<section class="top-buffer">
+			
+		<div class="row top-buffer">
+			<div class="col-xs-12 text-center">
+				<h4>Recent Purchase Records</h4>
+				<table class="table table-hover table-condensed">
+					<thead>
+						<th>#</th>
+						<th>Supplier</th>
+						<th>Total</th>
+						<th>Remaining</th>
+						<th>Date</th>
+					</thead>
+					<tbody>
+						<tr ng-repeat="porder in porders" ng-click="showOrderDetail(porder)">
+							<td>{{$index + 1}}</td>
+							<td>{{porder.supplier.name}}</td>
+							<td class="text-info">{{porder.total | currency:"":0}}</td>
+							<td class="text-danger">{{porder.remaining | currency:"":0}}</td>
+							<td>{{porder.date | date: shortdate}}</td>
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+		</div>		
+
+		<div class="row top-buffer">
+			<div class="col-xs-12">
+				<div class="row">
+					<div class="col-xs-3 text-left">
+						<a ui-sref="mainmenu" class="btn btn-warning btn-md">Back</a>
+					</div>
+					
+				</div>					
+			</div>					
+		</div>
+
+	</section>
+	<!-- End of Recent Sales -->
+	
+	
