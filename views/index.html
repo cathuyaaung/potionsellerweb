@@ -34,6 +34,10 @@
     <script src="/app/customerCtrl.js"></script>
     <script src="/app/buyCtrl.js"></script>
     <script src="/app/sellCtrl.js"></script>
+
+    <script src="/app/buyCtrl_YG.js"></script>
+    <script src="/app/purchaseOrderCtrl.js"></script>
+
 </head>
 
 <body>
@@ -65,7 +69,7 @@
                         <li ng-class="{active: $state.includes('customers')}"><a ui-sref="customers">Customers</a></li>
                         
                         <li ng-class="{active: $state.includes('sales')}"><a ui-sref="sales">Sales</a></li>
-                        <li ng-class="{active: $state.includes('purchases')}"><a ui-sref="purchases">Purchases</a></li>
+                        <li ng-class="{active: $state.includes('purchaseOrder')}"><a ui-sref="purchaseOrder">Purchases</a></li>
                         
                         <li ng-class="{active: $state.includes('settings')}"><a ui-sref="settings">Settings</a></li>
                         <li ng-class="{active: $state.includes('signout')}"><a ng-click="signout()">[Zafar Ahmed] Sign out</a></li>

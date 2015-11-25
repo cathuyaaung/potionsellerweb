@@ -37,6 +37,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
 		templateUrl: '/views/loginView.html',
 		controller: 'loginCtrl'
 	})			
+	
 	.state('mainmenu', {
 		url: '/main',
 		templateUrl: '/views/mainView.html',
@@ -48,7 +49,10 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
 	.state('items', {
 		url: '/items',
 		templateUrl: '/views/itemsView.html',
-		controller: 'itemCtrl'
+		controller: 'itemCtrl',
+		data: {
+			requireLogin: true
+		}
 	})
 	.state('suppliers', {
 		url: '/suppliers',
@@ -61,18 +65,44 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
 	.state('customers', {
 		url: '/customers',
 		templateUrl: '/views/customersView.html',
-		controller: 'customerCtrl'
+		controller: 'customerCtrl',
+		data: {
+			requireLogin: true
+		}
 	})
 	.state('buy', {
 		url: '/buy',
 		templateUrl: '/views/buyView.html',
-		controller: 'buyCtrl'
+		controller: 'buyCtrl',
+		data: {
+			requireLogin: true
+		}
 	})
 	.state('sell', {
 		url: '/sell',
 		templateUrl: '/views/sellView.html',
-		controller: 'sellCtrl'
+		controller: 'sellCtrl',
+		data: {
+			requireLogin: true
+		}
 	})
+	.state('buy_YG', {
+		url: '/buy_YG',
+		templateUrl: '/views/buyView_YG.html',
+		controller: 'buyCtrl_YG',
+		data: {
+			requireLogin: true
+		}
+	})
+	.state('purchaseOrder', {
+		url: '/purchaseOrder',
+		templateUrl: '/views/purchaseOrderView.html',
+		controller: 'purchaseOrderCtrl',
+		data: {
+			requireLogin: true
+		}
+	})
+
 	// .state('purchaseorders', {
 	// 	url: '/po',
 	// 	templateUrl, """

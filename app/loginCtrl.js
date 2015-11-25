@@ -8,12 +8,7 @@ appControllers.controller('loginCtrl',
 		
 		User.create({action: 'login'}, $scope.user, function(response){
 			$location.path('/main');
-			console.log(response);
 			$localStorage.token = response.token;
-			$localStorage.username = response.data.username;
-			$localStorage.company = response.data.company;
-
-			console.log($localStorage);
 		}, function(error){
 			console.log(error);
 		});

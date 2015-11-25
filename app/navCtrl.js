@@ -9,9 +9,6 @@ appControllers.controller('navCtrl',
 	$scope.signout = function(){
 		delete $localStorage.token;
 		$location.path('/login');
-		console.log($localStorage);
 	};
-
-
 
 }]);
