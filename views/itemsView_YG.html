@@ -1,0 +1,62 @@
+<section>
+	<div class="row top-buffer">
+		<div class="col-sm-12">
+			<button class=" btn btn-success btn-block" ng-click="choosecategory()" 
+				ng-hide="selectedcategory.name">
+				<span class="glyphicon glyphicon-search"></span> Filter By Category
+			</button>				
+			<button class=" btn btn-success btn-block" ng-click="choosecategory()" 
+				ng-show="selectedcategory.name">
+				{{selectedcategory.name}}
+			</button>				
+		</div>
+	</div>
+	<table class="table table-condensed top-buffer">
+		<thead>
+			<th class="block text-right">Category Name</th>
+			<th class="block text-right">Item Name</th>
+			<th class="block text-right">Item Description</th>
+			<th class="block text-right">Count</th>
+			<th></th>
+		</thead>
+		<tbody>
+			<tr ng-repeat="item in items">
+				<td class="col-xs-3">
+					<div class="block text-right">
+						<small class="text-block text-center">{{selectedcategory.name}}</small>
+					</div>						
+				</td>
+				<td class="col-xs-3">
+					<div class="block text-right">
+						<small class="text-block text-center">{{item.name}}</small>
+					</div>	
+				</td>
+				<td class="col-xs-4">
+					<div class="block text-right">
+						<small class="text-block text-center">{{item.desc}}</small>
+					</div>
+				</td>
+				<td class="col-xs-1 text-right">100</td>
+				<td class="col-xs-1">
+					<button class=" btn btn-danger btn-block btn-sm" ng-click="removeitem($index)">
+						<span class="glyphicon glyphicon-remove"></span>
+					</button>						
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<hr>
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="row">
+				<div class="col-xs-3 text-left">
+					<a ui-sref="mainmenu" class="btn btn-warning btn-md">Back</a>
+				</div>
+				<div class="col-xs-9 text-right">
+					<button class="btn btn-success btn-md" ng-click="addrow()">Add New Item</button>		
+				</div>
+			</div>					
+		</div>					
+	</div>
+
+</section>

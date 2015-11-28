@@ -102,7 +102,14 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
 			requireLogin: true
 		}
 	})
-
+	.state('items_YG', {
+		url: '/items_YG',
+		templateUrl: '/views/itemsView_YG.html',
+		controller: 'itemCtrl_YG',
+		data: {
+			requireLogin: true
+		}
+	})
 	// .state('purchaseorders', {
 	// 	url: '/po',
 	// 	templateUrl, """
