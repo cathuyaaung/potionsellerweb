@@ -1,0 +1,20 @@
+
+<div class="modal-header">
+    <h3 class="modal-title">{{title}}</h3>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-md-4 btn" ng-repeat="category in categories" ng-click="selectcategory(category)">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                   <h4>{{category.name}}</h4>
+                    <p>{{category.desc}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer text-left">
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>
+</div>
