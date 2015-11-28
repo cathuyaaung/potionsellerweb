@@ -1,3 +1,4 @@
+<div class="container">
 <div class="top-buffer-lg">
 	<div class="row">
 		<div class="col-xs-12 col-lg-8 col-lg-offset-2">
@@ -17,21 +18,44 @@
 				<div class="col-sm-6 col-sm-offset-3 well">
 						<h3>Register</h3>
 						<hr>
- 						<form role="form">
+ 						<form role="form" name="registerForm">
 							<div class="form-group">
 								<label for="username">Company Code</label>
-								<input type="text" class="form-control input-lg" ng-model="user.companycode">
+								<input type="text" class="form-control input-lg" ng-model="user.companycode"
+								 data-ng-trim="false" placeholder="Enter a code for your company. Only A-Z 0-9"
+								 autofocus required name="companycode">
 							</div>
 							<div class="form-group">
 								<label for="username">Username</label>
-								<input type="text" class="form-control input-lg" id="username" ng-model="user.username">
+								<input type="text" class="form-control input-lg" id="username" ng-model="user.username"
+								data-ng-trim="false" placeholder="Enter your username. Spaces not allowed"
+								required name="username">
 							</div>
 							<div class="form-group">
 								<label for="password">Password</label>
-								<input type="password" class="form-control input-lg" id="password" ng-model="user.password">		
+								<input type="password" class="form-control input-lg" id="password" ng-model="user.password"
+								required name="password">		
 							</div>
 							<div class="form-group">
-								<a class="btn btn-primary btn-lg" ng-click="register()">Register</a>
+								<button class="btn btn-primary btn-lg" ng-click="register()"
+								ng-disabled="registerForm.companycode.$error.required || 
+								registerForm.username.$error.required || 
+								registerForm.password.$error.required"
+								>Register</button>
+								<small ng-show="error" class="text-danger">{{error}}</small>
+				                <div class="text-danger">
+				                    <small ng-show="registerForm.companycode.$dirty && registerForm.companycode.$error.required">
+				                    <p>Company Code is required. Only enter A-Z and 0-9</p>
+				                    </small>
+				                    <small ng-show="registerForm.username.$dirty && registerForm.username.$error.required">
+				                    <p>Username is required. Spaces not allowed</p>
+				                    </small>
+				                    <small ng-show="registerForm.password.$dirty && registerForm.password.$error.required">
+				                    <p>Password is required.</p>
+				                    </small>
+
+				                </div>                            
+
 							</div>							
 						</form>
 				</div>		
@@ -63,4 +87,5 @@
 
 
 	</div>
+</div>
 </div>

@@ -147,6 +147,30 @@ appFactories.factory('SaleOrderPayment', ['$resource',  'ENV',
 }]);
 
 
+appFactories.factory('Register', ['$resource',  'ENV',
+	function($resource, ENV){
+	return $resource(ENV.apiendpoint+'/register', 
+		{ },  {
+			'getone': {method:'GET'},
+			'create': {method:'POST'},
+			'getall': {method:'GET', isArray:true},
+			'update': {method:'PUT'},
+			'delete': {method:'DELETE'}
+		});
+}]);
+
+appFactories.factory('Login', ['$resource',  'ENV',
+	function($resource, ENV){
+	return $resource(ENV.apiendpoint+'/login', 
+		{ },  {
+			'getone': {method:'GET'},
+			'create': {method:'POST'},
+			'getall': {method:'GET', isArray:true},
+			'update': {method:'PUT'},
+			'delete': {method:'DELETE'}
+		});
+}]);
+
 appFactories.factory('User', ['$resource',  'ENV',
 	function($resource, ENV){
 	return $resource(ENV.apiendpoint+'/user/:action', 

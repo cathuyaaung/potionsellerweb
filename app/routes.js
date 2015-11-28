@@ -13,11 +13,11 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
     // };
 
 
-	$urlRouterProvider.otherwise("/");
+	// $urlRouterProvider.otherwise("/");
 
 
 	$stateProvider
-	.state('landing', {
+	.state('home', {
 		url: '/',
 		templateUrl: '/views/landingView.html',
 		controller: 'mainCtrl'
@@ -25,7 +25,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
 	.state('pricing', {
 		url: '/pricing',
 		templateUrl: '/views/pricingView.html',
-		controller: 'mainCtrl'
+		controller: 'registerCtrl'
 	})
 	.state('register', {
 		url: '/register',
@@ -36,17 +36,27 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
 		url: '/login',
 		templateUrl: '/views/loginView.html',
 		controller: 'loginCtrl'
-	})			
-	
-	.state('mainmenu', {
+	})		
+	.state('logout', {
+		url: '/logout',
+		templateUrl: '/views/loginView.html',
+		controller: 'logoutCtrl'
+	})
+
+
+
+	.state('app', {
+		url: '/app',
+		templateUrl: '/views/app.html',
+		controller: 'webappCtrl'
+	})		
+
+	.state('app.main', {
 		url: '/main',
 		templateUrl: '/views/mainView.html',
-		controller: 'mainCtrl',
-		data: {
-			requireLogin: true
-		}
-	})	
-	.state('items', {
+		controller: 'mainCtrl'
+	})		
+	.state('app.items', {
 		url: '/items',
 		templateUrl: '/views/itemsView.html',
 		controller: 'itemCtrl',
@@ -54,7 +64,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
 			requireLogin: true
 		}
 	})
-	.state('suppliers', {
+	.state('app.suppliers', {
 		url: '/suppliers',
 		templateUrl: '/views/suppliersView.html',
 		controller: 'supplierCtrl',
@@ -62,7 +72,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
 			requireLogin: true
 		}
 	})
-	.state('customers', {
+	.state('app.customers', {
 		url: '/customers',
 		templateUrl: '/views/customersView.html',
 		controller: 'customerCtrl',
@@ -70,7 +80,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
 			requireLogin: true
 		}
 	})
-	.state('buy', {
+	.state('app.buy', {
 		url: '/buy',
 		templateUrl: '/views/buyView.html',
 		controller: 'buyCtrl',
@@ -78,7 +88,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
 			requireLogin: true
 		}
 	})
-	.state('sell', {
+	.state('app.sell', {
 		url: '/sell',
 		templateUrl: '/views/sellView.html',
 		controller: 'sellCtrl',
@@ -86,7 +96,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
 			requireLogin: true
 		}
 	})
-	.state('buy_YG', {
+	.state('app.buy_YG', {
 		url: '/buy_YG',
 		templateUrl: '/views/buyView_YG.html',
 		controller: 'buyCtrl_YG',
@@ -94,7 +104,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
 			requireLogin: true
 		}
 	})
-	.state('purchaseOrder', {
+	.state('app.purchases', {
 		url: '/purchaseOrder',
 		templateUrl: '/views/purchaseOrderView.html',
 		controller: 'purchaseOrderCtrl',
@@ -102,13 +112,22 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
 			requireLogin: true
 		}
 	})
-
-	// .state('purchaseorders', {
-	// 	url: '/po',
-	// 	templateUrl, """
-	// })
-
-
+	.state('app.sales', {
+		url: '/sales',
+		templateUrl: '/views/purchaseOrderView.html',
+		controller: 'purchaseOrderCtrl',
+		data: {
+			requireLogin: true
+		}
+	})
+	.state('app.account', {
+		url: '/account',
+		templateUrl: '/views/accountView.html',
+		controller: 'accountCtrl',
+		data: {
+			requireLogin: true
+		}
+	})
 	;
 
 

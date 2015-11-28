@@ -20,11 +20,12 @@ app.run(function ($rootScope, $state, $localStorage) {
 
 
 
-// Shorthand for $( document ).ready()
-$(function() {
-    
-$('.nav a').on('click', function(){
-    $('.navbar-toggle').click() //bootstrap 3.x by Richard
+ $(function(){ 
+
+
+$('.nav a').click(function(){
+	console.log('clicked');
+    $('.nav-collapse').collapse('hide');
 });
 
-});
+ });

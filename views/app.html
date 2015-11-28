@@ -1,0 +1,56 @@
+<div ng-controller='navCtrl'>
+    <nav class="navbar navbar-default"
+    ng-hide="$state.current.name=='landing' || $state.current.name == 'pricing' || 
+                $state.current.name == 'register' || $state.current.name == 'login'">
+        <div class="container-fluid">
+
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" 
+                data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" 
+                aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" ui-sref="app.main">{{companycode}} [{{tier}}] : {{title}}</a>
+            </div>
+            
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">            
+                    <li ng-class="{active: $state.includes('app.main')}"><a ui-sref="app.main">Main Menu</a></li>
+                    <li ng-class="{active: $state.includes('app.sell')}"><a ui-sref="app.sell">Sell</a></li>
+                    <li ng-class="{active: $state.includes('app.buy')}"><a ui-sref="app.buy">Buy</a></li>
+
+                    <li ng-class="{active: $state.includes('app.items')}"><a ui-sref="app.items">Items</a></li>                    
+                    <li ng-class="{active: $state.includes('app.suppliers')}"><a ui-sref="app.suppliers">Suppliers</a></li>
+                    <li ng-class="{active: $state.includes('app.customers')}"><a ui-sref="app.customers">Customers</a></li>
+                    
+                    <li ng-class="{active: $state.includes('app.sales')}"><a ui-sref="app.sales">Sales</a></li>
+                    <li ng-class="{active: $state.includes('app.purchases')}"><a ui-sref="app.purchases">Purchases</a></li>
+                    
+                    <li ng-class="{active: $state.includes('app.account')}"><a ui-sref="app.account">Account</a></li>
+                    <li ng-class="{active: $state.includes('logout')}">
+                    <a ui-sref="logout">[{{username}}:{{role}}] Sign Out</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+</div>
+
+<div class="container">
+    <ui-view>    
+</div>
+
+<script>
+$(function(){ 
+
+
+$('.nav a').click(function(){
+    $('.navbar-collapse').collapse('hide');
+});
+
+
+ });
+</script>
