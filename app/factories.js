@@ -79,8 +79,8 @@ appFactories.factory('Customer', ['$resource',  'ENV',
 
 appFactories.factory('PurchaseOrder', ['$resource',  'ENV',
 	function($resource, ENV){
-	return $resource(ENV.apiendpoint+'/porder/:porderid', 
-		{ porderid: '@porderid' }, {
+	return $resource(ENV.apiendpoint+'/porder/:porderid/:action', 
+		{ porderid: '@porderid', action: '@action' }, {
 			'getone': {method:'GET'},
 			'create': {method:'POST'},
 			'getall': {method:'GET', isArray:true},

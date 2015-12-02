@@ -4,7 +4,7 @@ appControllers.controller('navCtrl',
 
 	$scope.$state = $state;
 
-	console.log($localStorage.user);
+	// console.log($localStorage.user);
 
 	if($localStorage.user){
 		$scope.companycode = $localStorage.user.company.code;
@@ -13,7 +13,7 @@ appControllers.controller('navCtrl',
 		$scope.role = $localStorage.user.role;
 	}
 
-	console.log($state.current.name);
+	// console.log($state.current.name);
 	    switch($state.current.name){
 		case 'app.main':
 			$scope.title = 'Main Menu';

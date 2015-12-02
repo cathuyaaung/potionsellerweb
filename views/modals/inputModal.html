@@ -1,0 +1,18 @@
+
+<div class="modal-header">
+    <h3 class="modal-title">Add Payment</h3>
+</div>
+<div class="modal-body">
+    <h4>Enter Amount</h4>
+	<div class="form-group">
+		<label for="input1"></label>
+		<input name="input1" type="number" class="form-control" ng-model="inputAmount" autofocus>
+	</div>
+</div>
+<div class="modal-footer text-left">
+    <button class="btn btn-warning pull-left" type="button" ng-click="cancel()"
+    ng-disabled="supplierForm.name.$error.required">Cancel</button>
+    <button class="btn btn-primary" type="button" ng-click="ok()"
+    ng-disabled="supplierForm.name.$error.required">Done</button>
+</div>
+</div>

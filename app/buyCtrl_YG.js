@@ -73,38 +73,25 @@ function($state, $scope, $uibModal, PurchaseOrder, PurchaseOrderItem) {
 				controller: 'finalizeSaleOrderModalCtrl'
 			});
 			finalizeSaleOrderMI.result.then(function(){		
-				var supplierid = null;
-				if($scope.supplier != null){
-					supplierid = $scope.supplier._id;
-				}
 				var porder = {
-					supplier: supplierid,
+					supplier: $scope.supplier,
 					total: $scope.grandtotal,
-					remaining: $scope.grandtotal
+					remaining: $scope.grandtotal,
+					poitems: $scope.bitems
 				};
+				console.log(porder);
 				PurchaseOrder.create(porder, function(response){
-
-					async.each($scope.bitems, function(n, callback){
-						var pitem = {
-							item: n.item,
-							count: n.count,
-							price: n.price
-						};
-						PurchaseOrderItem.create({porderid: response._id}, pitem, function(response){
-							console.log(response)
-							callback();
-						}, function(error){console.log(error)});
-					}, function(err){
-						$scope.bitems = [];
-						$scope.grandtotal = 0;
-					});
-					$state.go('purchaseOrder');
+					if(response.success){
+						$state.go('app.purchases');
+					} else {
+						console.log(response);
+					}
+				}, function(error){
+					console.log(error);
 				});
 			});
 		}
 	};
-
-
 }]);
 
 

@@ -13,11 +13,12 @@
 				<div class="panel-body">
 					<h4>{{supplier.name}}</h4>
 					<p>{{supplier.desc}}</p>
+					<p>Remaining Payment: {{supplier.totalremaining | currency:""}}</p>
 					<span class="glyphicon glyphicon-edit btn btn-warning" 
 					ng-click="updatesupplier(supplier);$event.stopPropagation()"></span>
-					<span class="glyphicon glyphicon-remove btn btn-danger" 
+<!-- 					<span class="glyphicon glyphicon-remove btn btn-danger" 
 					ng-click="removesupplier(supplier);$event.stopPropagation()"></span>
-				</div>
+ -->				</div>
 			</div>
 		</div>
 	</div>

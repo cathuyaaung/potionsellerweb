@@ -1,6 +1,6 @@
 appControllers.controller('purchaseOrderCtrl', 
-['$scope', '$uibModal', 'PurchaseOrder', 'PurchaseOrderItem',
-function($scope, $uibModal, PurchaseOrder, PurchaseOrderItem) {
+['$scope', '$uibModal', 'PurchaseOrder',
+function($scope, $uibModal, PurchaseOrder) {
 
 	$scope.porders = PurchaseOrder.getall();
 
@@ -14,11 +14,7 @@ function($scope, $uibModal, PurchaseOrder, PurchaseOrderItem) {
 			}
 		});		
 		orderDetailModalInstance.result.then(function(porder){
-			if(porder.delete){
-				PurchaseOrder.delete({porderid: porder._id}, function(response){
-					$scope.porders = PurchaseOrder.getall();
-				}, function(err){console.log(err);});
-			}
+			$scope.porders = PurchaseOrder.getall();
 		});		
 	};
 
@@ -31,24 +27,57 @@ function($scope, $uibModal, PurchaseOrder, PurchaseOrderItem) {
 // -----------------
 
 appControllers.controller('purchaseOrderDetailModalCtrl', 
-['$scope', '$uibModalInstance', '$uibModal', 'porder', 'PurchaseOrderItem',
-function($scope, $uibModalInstance, $uibModal, porder, PurchaseOrderItem){
+['$scope', '$uibModalInstance', '$uibModal', 'porder', 'PurchaseOrder',
+function($scope, $uibModalInstance, $uibModal, porder, PurchaseOrder){
 	$scope.title = "Purchase Order Detail";
 	$scope.porder = porder;
-	console.log(porder);
-	$scope.porderitems = PurchaseOrderItem.getall({porderid:porder._id});
-	$scope.ok = function() { $uibModalInstance.dismiss(); };
-	$scope.porder.delete = true;
+	// console.log(porder);
+	$scope.porderitems = porder.poitems;
+	$scope.ok = function() { $uibModalInstance.close(); };
+	$scope.porder.delete = false;
+
+	$scope.totalpaid = 0;
+	for(var i=0; i<porder.popayments.length; i++){
+		 $scope.totalpaid = $scope.totalpaid + porder.popayments[i].amount;
+	}
+
 	$scope.delete = function(){
 		var deletePOConfirmationMI = $uibModal.open({
 			animation: true,
 			templateUrl: '/views/modals/confirmationModal.html',
 			controller: 'deletePOConfirmationMICtrl'
 		});
-		deletePOConfirmationMI.result.then(function(){				
-			$uibModalInstance.close($scope.porder);
+		deletePOConfirmationMI.result.then(function(){	
+			PurchaseOrder.delete({porderid: $scope.porder._id}, function(response){
+				$uibModalInstance.close();
+			}, function(err){console.log(err);});			
 		});
 	};
+	$scope.addpayment = function(){
+		var addPaymentMI = $uibModal.open({
+			animation: true,
+			templateUrl: '/views/modals/inputModal.html',
+			controller: 'addPaymentCtrl',
+			size: 'sm'
+		});
+		addPaymentMI.result.then(function(paymentAmount){
+			var payment = { amount: paymentAmount};	
+			PurchaseOrder.create({porderid:$scope.porder._id, action:'addpayment'}, payment, function(response){
+				if(response.success){
+					$scope.porder = response.data;
+					$scope.totalpaid = 0;
+					for(var i=0; i<$scope.porder.popayments.length; i++){
+						 $scope.totalpaid = $scope.totalpaid + $scope.porder.popayments[i].amount;
+					}					
+				} else {
+					console.log(response)
+				}
+			}, function(error){
+				console.log(error);
+			});
+			// $uibModalInstance.close();
+		});
+	};	
 }]);
 
 appControllers.controller('deletePOConfirmationMICtrl', 
@@ -58,4 +87,13 @@ function($scope, $uibModalInstance, $uibModal){
 	$scope.ok = function() { $uibModalInstance.close(); };
 	$scope.cancel = function() { $uibModalInstance.dismiss(); };
 }]);
+
+appControllers.controller('addPaymentCtrl', 
+['$scope', '$uibModalInstance', '$uibModal',
+function($scope, $uibModalInstance, $uibModal){
+
+	$scope.ok = function() { $uibModalInstance.close($scope.inputAmount); };
+	$scope.cancel = function() { $uibModalInstance.dismiss(); };
+}]);
+
 

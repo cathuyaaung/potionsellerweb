@@ -3,7 +3,11 @@
     <h3 class="modal-title">{{title}}</h3>
 </div>
 <div class="modal-body">
-    <h4>Supplier: {{porder.supplier.name}} <small>{{porder.date | date:shortdate}}</small></h4>
+    <h4>Supplier: {{porder.supplier.name}} 
+<!--     <span class="text-success">{{porder.total}}</span> 
+    <span class="text-danger">{{porder.remaining}}</span> 
+ -->    <small>{{porder.createdAt | date:shortdate}}</small></h4>
+    <hr>
     <table class="table table-hover table-condensed">
         <thead>
             <th>Item</th>
@@ -15,18 +19,41 @@
             <tr ng-repeat="porderitem in porderitems">
                 <td>{{porderitem.item.name}}</td>
                 <td>{{porderitem.count}}</td>
-                <td>{{porderitem.price}}</td>
-                <td>{{porderitem.count * porderitem.price | currency:"":0}}</td>
+                <td>{{porderitem.price | currency:""}}</td>
+                <td>{{porderitem.count * porderitem.price | currency:""}}</td>
             </tr>
         </tbody>
         <tfoot>
-            <td colspan="4"><h3>Total: {{porder.total | currency:"":0}}</h3></td>
+            <td colspan="2"><h3>Total: {{porder.total | currency:"":0}}</h3></td>
+            <td colspan="2"><h3>Remaining: {{porder.remaining | currency:"":0}}</h3></td>
         </tfoot>
     </table>
+    
+    <hr>
+    <h4>Payments</h4>
+    <table class="table table-hover table-condensed">
+        <thead>            
+            <th>Date</th>
+            <th>Amount</th>
+        </thead>
+        <tbody>
+            <tr ng-repeat="popayment in porder.popayments">                
+                <td>{{popayment.date | date:'dd MMM yyyy HH:mm a'}}</td>
+                <td>{{popayment.amount}}</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <td colspan="2"><h3>Total Payments: {{totalpaid | currency:"":0}}</h3></td>
+        </tfoot>        
+    </table>
+
 </div>
 <div class="modal-footer text-left">
     <button class="btn btn-danger pull-left" type="button" ng-click="delete()"
     ng-disabled="supplierForm.name.$error.required">Delete</button>
+    <button class="btn btn-info pull-left" type="button" ng-click="addpayment()"
+    ng-disabled="supplierForm.name.$error.required">Add Payment</button>
+
     <button class="btn btn-primary" type="button" ng-click="ok()"
     ng-disabled="supplierForm.name.$error.required">Done</button>
 </div>

@@ -82,8 +82,8 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
 	})
 	.state('app.buy', {
 		url: '/buy',
-		templateUrl: '/views/buyView.html',
-		controller: 'buyCtrl',
+		templateUrl: '/views/buyView_YG.html',
+		controller: 'buyCtrl_YG',
 		data: {
 			requireLogin: true
 		}
@@ -96,14 +96,14 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
 			requireLogin: true
 		}
 	})
-	.state('app.buy_YG', {
-		url: '/buy_YG',
-		templateUrl: '/views/buyView_YG.html',
-		controller: 'buyCtrl_YG',
-		data: {
-			requireLogin: true
-		}
-	})
+	// .state('app.buy_YG', {
+	// 	url: '/buy_YG',
+	// 	templateUrl: '/views/buyView_YG.html',
+	// 	controller: 'buyCtrl_YG',
+	// 	data: {
+	// 		requireLogin: true
+	// 	}
+	// })
 	.state('app.purchases', {
 		url: '/purchaseOrder',
 		templateUrl: '/views/purchaseOrderView.html',
