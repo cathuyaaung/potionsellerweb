@@ -4,11 +4,25 @@
 </div>
 <div class="modal-body">
     <div class="row">
+        <div class="col-md-4 btn" >
+            <div class="panel panel-default">
+                <div class="panel-body">
+                   <h4>Add New Category.</h4>
+                    <p>Add new category.  </p>
+                    <span class="glyphicon glyphicon-new-window btn pull-left" 
+                    ng-click="addcategory();$event.stopPropagation()"></span>
+                </div>
+            </div>
+        </div>
         <div class="col-md-4 btn" ng-repeat="category in categories" ng-click="selectcategory(category)">
             <div class="panel panel-default">
                 <div class="panel-body">
                    <h4>{{category.name}}</h4>
                     <p>{{category.desc}}</p>
+                    <span class="glyphicon glyphicon-edit btn pull-left" 
+                    ng-click="updatecategory(category);$event.stopPropagation()"></span>
+                    <span class="glyphicon glyphicon-remove btn pull-right" 
+                    ng-click="removecategory(category);$event.stopPropagation()"></span>
                 </div>
             </div>
         </div>

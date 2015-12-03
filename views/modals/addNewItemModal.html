@@ -1,0 +1,50 @@
+
+<div class="modal-header">
+    <h3 class="modal-title">{{title}}</h3>
+</div>
+<div class="modal-body">
+    <form novalidate name="itemForm">
+        <div class="row form-group">
+            <div class="col-md-6">
+               <button class=" btn btn-success btn-block" ng-click="choosecategory()" 
+                    ng-hide="selectedcategory.name">
+                    <span class="glyphicon glyphicon-search"></span> Choose Category
+                </button>               
+                <button class=" btn btn-success btn-block" ng-click="choosecategory()" 
+                    ng-show="selectedcategory.name">
+                    {{selectedcategory.name}}
+                </button>                    
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-6">
+                <input required type="text" class="form-control" placeholder="Item Name" 
+                ng-model="itemToAdd.name" name="name" autofocus>                  
+            </div>
+            <div class="col-md-6">
+                <div class="has-error" 
+                ng-show="itemForm.$dirty && itemForm.name.$invalid">
+                    <small
+                    ng-show="itemForm.name.$error.required">
+                    Name is required.
+                    </small>
+                </div>                            
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <input type="text" class="form-control" placeholder="Item Description"
+                ng-model="itemToAdd.desc" name="desc">                  
+            </div>
+            <div class="col-md-6">                
+            </div>
+        </div>
+    </form>                 
+</div>
+<div class="modal-footer text-left">
+    <button class="btn btn-primary" type="button" ng-click="ok(itemToAdd)"
+    ng-disabled="supplierForm.name.$error.required">{{actionbutton}}</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>
+</div>
