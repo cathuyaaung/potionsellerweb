@@ -131,7 +131,7 @@ appControllers.controller('chooseItemModalCtrl',
 appControllers.controller('finalizeSaleOrderModalCtrl', 
 ['$scope', '$uibModalInstance', '$uibModal',
 function($scope, $uibModalInstance, $uibModal){
-	$scope.text = "Create Sale Order?";
+	$scope.text = "Create Purchase Order?";
 	$scope.ok = function() { $uibModalInstance.close(); };
 	$scope.cancel = function() { $uibModalInstance.dismiss(); };
 }]);
