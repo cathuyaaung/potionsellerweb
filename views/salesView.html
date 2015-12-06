@@ -1,0 +1,36 @@
+	
+	<section class="top-buffer">
+			
+		<div class="row top-buffer">
+			<div class="col-xs-12 text-center">
+				
+				<table class="table table-hover table-condensed">
+					<thead>
+						<th>#</th>
+						<th>Customer</th>
+						<th>Total</th>
+						<th>Remaining</th>
+						<th>Date</th>
+					</thead>
+					<tbody>
+						<tr ng-repeat="sorder in sorders" ng-click="showOrderDetail(sorder)">
+							<td>{{$index + 1}}</td>
+							<td>
+								{{sorder.customer.name}}<br>
+								<span ng-repeat="soitem in sorder.soitems">
+									<h6>{{soitem.item.name}} at {{soitem.price | currency:""}} x {{soitem.count}}</h6>
+								</span>								
+							</td>
+							<td class="text-info">{{sorder.total | currency:""}}</td>
+							<td class="text-danger">{{sorder.remaining | currency:""}}</td>
+							<td><h6>{{sorder.createdAt | date:'dd MMM yyyy HH:mm a'}}</h6></td>
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+		</div>		
+
+	</section>
+	
+	

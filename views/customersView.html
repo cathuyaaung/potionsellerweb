@@ -13,6 +13,7 @@
 				<div class="panel-body">
 					<h4>{{customer.name}}</h4>
 					<p>{{customer.desc}}</p>
+					<p>Remaining Payment: {{customer.totalremaining | currency:""}}</p>
 					<span class="glyphicon glyphicon-edit btn btn-warning" 
 					ng-click="updatecustomer(customer);$event.stopPropagation()"></span>
 					<span class="glyphicon glyphicon-remove btn btn-danger" 

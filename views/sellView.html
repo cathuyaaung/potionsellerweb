@@ -1,5 +1,5 @@
 	<!-- Recent Sales -->
-	<section class="top-buffer" ng-hide="sellMode">
+<!-- 	<section class="top-buffer" ng-hide="sellMode">
 		<div class="row">
 			<div class="col-sm-12 text-center">
 				<button class="btn btn-primary btn-lg" ng-click="sellview()">
@@ -28,7 +28,6 @@
 							</td>
 							<td class="text-right">
 								<span class="text-info">{{sorder.total | currency:"":0}}</span><br>
-								<!-- <span class="text-danger">{{sorder.remaining | currency:"":0}}</span> -->
 							</td>
 							<td><h6>{{sorder.date | date:"MMM d yyyy HH:mm a"}}</h6></td>
 						</tr>
@@ -37,11 +36,11 @@
 
 			</div>
 		</div>		
-	</section>
+	</section> -->
 	<!-- End of Recent Sales -->
 	
 	<!-- SELL -->
-	<section ng-show="sellMode">
+
 		<div class="row top-buffer">
 			<div class="col-sm-12">
 				<button class=" btn btn-success btn-block" ng-click="addcustomer()" ng-hide="customer.name">
@@ -120,5 +119,5 @@
 				</div>					
 			</div>					
 		</div>
-	</section>
+
 	<!-- End of SELL -->

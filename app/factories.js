@@ -114,8 +114,8 @@ appFactories.factory('PurchaseOrderPayment', ['$resource',  'ENV',
 
 appFactories.factory('SaleOrder', ['$resource', 'ENV',
 	function($resource, ENV){
-	return $resource(ENV.apiendpoint+'/sorder/:sorderid', 
-		{ sorderid: '@sorderid' },  {
+	return $resource(ENV.apiendpoint+'/sorder/:sorderid/:action', 
+		{ sorderid: '@sorderid', action: '@action' },  {
 			'getone': {method:'GET'},
 			'create': {method:'POST'},
 			'getall': {method:'GET', isArray:true},

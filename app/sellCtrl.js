@@ -1,23 +1,10 @@
 appControllers.controller('sellCtrl', 
-['$scope', '$uibModal', 'SaleOrder', 'SaleOrderItem',
-function($scope, $uibModal, SaleOrder, SaleOrderItem) {
+['$scope', '$uibModal', 'SaleOrder', 'SaleOrderItem', '$state',
+function($scope, $uibModal, SaleOrder, SaleOrderItem, $state) {
 
 	$scope.sitems = [];
 	$scope.sorders = SaleOrder.getall();
 
-	$scope.sellview = function(){
-		$scope.sellMode = true;
-		$scope.sitems = [];
-		var newsitem = {};
-		$scope.sitems.push(newsitem);		
-		$scope.grandtotal = 0;
-	};
-	$scope.back = function(){
-		$scope.sorders = SaleOrder.getall();
-		$scope.sitems = [];
-		$scope.sellMode = false;
-		$scope.grandtotal = 0;
-	};
 	$scope.addrow = function(){
 		var newsitem = {};
 		$scope.sitems.push(newsitem);
@@ -88,50 +75,23 @@ function($scope, $uibModal, SaleOrder, SaleOrderItem) {
 					customerid = $scope.customer._id;
 				}
 				var sorder = {
-					customerid: customerid,
+					customer: $scope.customer,
 					total: $scope.grandtotal || 0,
-					remaining: 0
+					remaining: $scope.grandtotal || 0,
+					soitems: $scope.sitems
 				};
 				SaleOrder.create(sorder, function(response){
-
-					// _.forEach($scope.sitems, function(n, index){
-					// 	var sitem = {
-					// 		item: n.item,
-					// 		count: n.count,
-					// 		price: n.price
-					// 	};
-					// 	console.log(sitem);
-					// 	SaleOrderItem.create({sorderid: response._id}, sitem, function(response){
-					// 		console.log(response)
-					// 	}, function(error){console.log(error)});
-					// });
-
-
-					async.each($scope.sitems, function(n, callback){
-						var sitem = {
-							item: n.item,
-							count: n.count,
-							price: n.price
-						};
-						SaleOrderItem.create({sorderid: response._id}, sitem, function(response){
-							console.log(response)
-							callback();
-						}, function(error){console.log(error)});
-					}, function(err){
-						$scope.sorders = SaleOrder.getall();
-						$scope.sitems = [];
-						$scope.sellMode = false;
-						$scope.grandtotal = 0;
-					});
-
-
-
+					if(response.success){
+						$state.go('app.sales');
+					} else {
+						console.log(response);
+					}
+				}, function(error){
+					console.log(error);
 				});
 			});
 		}
 	};
-
-
 }]);
 
 

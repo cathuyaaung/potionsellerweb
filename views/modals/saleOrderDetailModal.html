@@ -1,0 +1,58 @@
+
+<div class="modal-header">
+    <h3 class="modal-title">{{title}}</h3>
+</div>
+<div class="modal-body">
+    <h4>Customer: {{sorder.supplier.name}} 
+    <small>{{sorder.createdAt | date:shortdate}}</small></h4>
+    <hr>
+    <table class="table table-hover table-condensed">
+        <thead>
+            <th>Item</th>
+            <th>Count</th>
+            <th>Price</th>
+            <th>Total</th>
+        </thead>
+        <tbody>
+            <tr ng-repeat="soitem in sorder.soitems">
+                <td>{{soitem.item.name}}</td>
+                <td>{{soitem.count}}</td>
+                <td>{{soitem.price | currency:""}}</td>
+                <td>{{soitem.count * soitem.price | currency:""}}</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <td colspan="2"><h3>Total: {{sorder.total | currency:""}}</h3></td>
+            <td colspan="2"><h3>Remaining: {{sorder.remaining | currency:""}}</h3></td>
+        </tfoot>
+    </table>
+    
+    <hr>
+    <h4>Payments</h4>
+    <table class="table table-hover table-condensed">
+        <thead>            
+            <th>Date</th>
+            <th>Amount</th>
+        </thead>
+        <tbody>
+            <tr ng-repeat="sopayment in sorder.sopayments">                
+                <td>{{sopayment.date | date:'dd MMM yyyy HH:mm a'}}</td>
+                <td>{{sopayment.amount | currency:""}}</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <td colspan="2"><h3>Total Payments: {{totalpaid | currency:""}}</h3></td>
+        </tfoot>        
+    </table>
+
+</div>
+<div class="modal-footer text-left">
+    <button class="btn btn-danger pull-left" type="button" ng-click="delete()"
+    ng-disabled="supplierForm.name.$error.required">Delete</button>
+    <button class="btn btn-info pull-left" type="button" ng-click="addpayment()"
+    ng-disabled="supplierForm.name.$error.required">Add Payment</button>
+
+    <button class="btn btn-primary" type="button" ng-click="ok()"
+    ng-disabled="supplierForm.name.$error.required">Done</button>
+</div>
+</div>
