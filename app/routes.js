@@ -56,6 +56,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
 		templateUrl: '/views/mainView.html',
 		controller: 'mainCtrl'
 	})		
+
 	.state('app.suppliers', {
 		url: '/suppliers',
 		templateUrl: '/views/suppliersView.html',
