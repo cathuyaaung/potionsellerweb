@@ -61,6 +61,9 @@ function($state, $scope, $uibModal, PurchaseOrder, PurchaseOrderItem) {
 
 	$scope.done = function(){
 		$scope.error = null;
+		if($scope.supplier == null) {
+			$scope.error = "Supplier is missing";
+		}
 		_.forEach($scope.bitems, function(n, index){
 			if(n.item == null || n.item == undefined){
 				$scope.error = "Item "+ (index+1) +" is missing"
