@@ -58,6 +58,9 @@ function($scope, $uibModal, SaleOrder, SaleOrderItem, $state) {
 
 	$scope.done = function(){
 		$scope.error = null;
+		if($scope.customer == null){
+			$scope.error = "Customer is missing";
+		}
 		_.forEach($scope.sitems, function(n, index){
 			if(n.item == null || n.item == undefined){
 				$scope.error = "Item "+ (index+1) +" is missing"
