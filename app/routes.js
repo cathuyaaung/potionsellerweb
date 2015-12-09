@@ -116,12 +116,13 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
 	})
 	.state('app.items', {
 		url: '/items',
-		templateUrl: '/views/itemsView.html',
-		controller: 'itemCtrl',
+		templateUrl: '/views/itemsView_YG.html',
+		controller: 'itemCtrl_YG',
 		data: {
 			requireLogin: true
 		}
 	})
+	/*
 	.state('app.items_YG', {
 		url: '/items_YG',
 		templateUrl: '/views/itemsView_YG.html',
@@ -130,6 +131,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
 			requireLogin: true
 		}
 	})
+	*/
 
 	.state('app.admin', {
 		url: '/admin',
@@ -139,7 +141,6 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
 			requiredLogin: true
 		}
 	})
-
 	;
 
 

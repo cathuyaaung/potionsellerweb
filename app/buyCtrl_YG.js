@@ -61,6 +61,9 @@ function($state, $scope, $uibModal, PurchaseOrder, PurchaseOrderItem) {
 
 	$scope.done = function(){
 		$scope.error = null;
+		if($scope.supplier == null) {
+			$scope.error = "Supplier is missing";
+		}
 		_.forEach($scope.bitems, function(n, index){
 			if(n.item == null || n.item == undefined){
 				$scope.error = "Item "+ (index+1) +" is missing"
@@ -70,7 +73,7 @@ function($state, $scope, $uibModal, PurchaseOrder, PurchaseOrderItem) {
 			var finalizeSaleOrderMI = $uibModal.open({
 				animation: true,
 				templateUrl: '/views/modals/confirmationModal.html',
-				controller: 'finalizeSaleOrderModalCtrl'
+				controller: 'finalizePurchaseOrderModalCtrl'
 			});
 			finalizeSaleOrderMI.result.then(function(){		
 				var porder = {
@@ -128,10 +131,10 @@ appControllers.controller('chooseItemModalCtrl',
 	$scope.cancel = function() { $uibModalInstance.dismiss(); };
 }]);
 
-appControllers.controller('finalizeSaleOrderModalCtrl', 
+appControllers.controller('finalizePurchaseOrderModalCtrl', 
 ['$scope', '$uibModalInstance', '$uibModal',
 function($scope, $uibModalInstance, $uibModal){
-	$scope.text = "Create Sale Order?";
+	$scope.text = "Create Purchase Order?";
 	$scope.ok = function() { $uibModalInstance.close(); };
 	$scope.cancel = function() { $uibModalInstance.dismiss(); };
 }]);
