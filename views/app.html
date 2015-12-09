@@ -32,6 +32,10 @@
                     <li ng-class="{active: $state.includes('app.account')}"><a ui-sref="app.account">Account</a></li>
                     <li ng-class="{active: $state.includes('logout')}">
                     <a ui-sref="logout">[{{username}}:{{role}}] Sign Out</a></li>
+
+                    <li ng-show="role=='ADMIN'">
+                    <a ui-sref="app.admin">Admin</a></li>
+
                 </ul>
             </div>
 

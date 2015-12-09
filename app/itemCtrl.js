@@ -43,7 +43,7 @@ appControllers.controller('itemCtrl',
 	$scope.additem = function(item){
 		Item.create({categoryid: $scope.selectedcategory._id}, item, function(response){
 			console.log(response);
-			$scope.items = Item.getall({categoryid:response.item.category._id});
+			$scope.items = Item.getall({categoryid:response.data.category._id});
 		}, function(error){console.log(error.data.message);});
 	};
 	$scope.removeitem = function(item){

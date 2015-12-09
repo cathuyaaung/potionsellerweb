@@ -123,13 +123,23 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
 		}
 	})
 	.state('app.items_YG', {
-		url: '/items',
+		url: '/items_YG',
 		templateUrl: '/views/itemsView_YG.html',
 		controller: 'itemCtrl_YG',
 		data: {
 			requireLogin: true
 		}
 	})
+
+	.state('app.admin', {
+		url: '/admin',
+		templateUrl: '/views/admin.html',
+		controller: 'adminCtrl',
+		data: {
+			requiredLogin: true
+		}
+	})
+
 	;
 
 

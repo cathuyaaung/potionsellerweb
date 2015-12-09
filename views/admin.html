@@ -1,0 +1,35 @@
+<h1>Users</h1>
+	<section class="top-buffer">
+			
+		<div class="row top-buffer">
+			<div class="col-xs-12 text-center">
+				<!-- <h4>Recent Purchase Records</h4> -->
+				<table class="table table-hover table-condensed">
+					<thead>
+							<th>user.company.code</th>
+							<th>user.company.status</th>
+							<th>user.company.registerdate</th>
+							<th>user.company.expirydate</th>
+							<th>user.company.tier</th>
+							<th>user.company.alloweditemcount</th>
+							<th>user.username</th>
+							<th>user.password</th>
+							<th>user.role</th>
+					</thead>
+					<tbody>
+						<tr ng-repeat="user in users">							
+							<td>{{user.company.code}}</td>
+							<td>{{user.company.status}}</td>
+							<td>{{user.company.registerdate}}</td>
+							<td>{{user.company.expirydate}}</td>
+							<td>{{user.company.tier}}</td>
+							<td>{{user.company.alloweditemcount}}</td>
+							<td>{{user.username}}</td>
+							<td>{{user.password}}</td>
+							<td>{{user.role}}</td>
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+		</div>	
