@@ -4,7 +4,6 @@ appFactories.factory('authInterceptor', function ($q, $localStorage) {
     return {
         request: function (config) {
             config.headers = config.headers || {};
-            // console.log($localStorage.token);
             if ($localStorage.token) {
                 config.headers.auth = $localStorage.token;
             }
